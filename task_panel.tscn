@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://7jut61be564c"]
+
+[node name="TaskPanel" type="Panel"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TaskLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 88.0
+offset_bottom = 47.0
+text = "1. spookie dookie"

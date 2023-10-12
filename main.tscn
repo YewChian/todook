@@ -40,6 +40,10 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="TaskPanelVbox" type="VBoxContainer" parent="CanvasLayer/CenterContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer/CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8

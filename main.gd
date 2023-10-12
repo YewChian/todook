@@ -3,6 +3,8 @@ extends Node2D
 var data = {}
 var task_count = 0
 
+var preloaded_taskpanel = preload("res://task_panel.tscn")
+
 func _ready():
 	load_data()
 	print_tasks(data)
@@ -54,6 +56,10 @@ func save():
 	
 func add_task(text):
 	data[task_count] = text
+	
+	var new_panel = preloaded_taskpanel.instantiate()
+	%TaskPanelVbox.add_child(new_panel)
+	
 	task_count += 1
 
 
