@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgwvlpi4gdcgj"]
+
+[ext_resource type="Script" path="res://Tolumber.gd" id="1_mpevu"]
+[ext_resource type="Texture2D" uid="uid://dvj6um75s4k8i" path="res://Assets/Tolumber.png" id="2_7riel"]
+
+[node name="Tolumber" type="CharacterBody2D"]
+script = ExtResource("1_mpevu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7riel")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="StateTimer" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="timeout" from="StateTimer" to="." method="_on_state_timer_timeout"]

@@ -4,6 +4,7 @@ var data = {}
 var task_count = 0
 
 var preloaded_taskpanel = preload("res://task_panel.tscn")
+var preloaded_tolumber = preload("res://tolumber.tscn")
 
 
 func _ready():
@@ -12,11 +13,19 @@ func _ready():
 
 
 func _on_texture_button_pressed():
+	if %TaskInput.text == "":
+		print("not saving empty task")
+		return
+		
 	add_task_to_data(%TaskInput.text)
 	update_taskpanels()
 	%TaskInput.text = ""
 	update_taskpanels()
 	save()
+	
+	var new_todookie = preloaded_tolumber.instantiate()
+	add_child(new_todookie)
+	new_todookie.global_position = Vector2(325, 943)
 	
 
 func load_data():
@@ -35,7 +44,6 @@ func load_data():
 		return null
 	# Get the data from the JSON object
 	self.data = json.get_data()
-	print(self.data)
 	
 	# Get task_counter value
 	json_string = save_game.get_line()
@@ -54,7 +62,6 @@ func save():
 
 	save_game.store_line(data_json_string)
 	save_game.store_line(task_count_json_string)
-	print(save_game.get_as_text())
 	
 	
 func add_task_to_data(text):
@@ -76,8 +83,9 @@ func update_taskpanels():
 
 
 func delete_task_from_data(target_id):
-	pass
-			
+	data.erase(target_id)
+	save()
+	
 
 func _on_task_finished(task_panel):
 #	create_todookie()
