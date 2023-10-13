@@ -5,16 +5,17 @@ var task_count = 0
 
 var preloaded_taskpanel = preload("res://task_panel.tscn")
 
+
 func _ready():
 	load_data()
-	print_tasks(data)
-	print(data)
+	update_taskpanels()
 
 
 func _on_texture_button_pressed():
-	add_task(%TaskInput.text)
+	add_task_to_data(%TaskInput.text)
+	update_taskpanels()
 	%TaskInput.text = ""
-	print_tasks(data)
+	update_taskpanels()
 	save()
 	
 
@@ -44,6 +45,7 @@ func load_data():
 		return null
 	self.task_count = json.get_data()
 		
+		
 func save():
 	var save_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	print("saving: ", data)
@@ -54,20 +56,30 @@ func save():
 	save_game.store_line(task_count_json_string)
 	print(save_game.get_as_text())
 	
-func add_task(text):
+	
+func add_task_to_data(text):
 	data[task_count] = text
-	
-	var new_panel = preloaded_taskpanel.instantiate()
-	%TaskPanelVbox.add_child(new_panel)
-	
 	task_count += 1
 
 
-func print_tasks(data):
-	var printed_text = ""
+func update_taskpanels():
+	for taskpanel in %TaskPanelVbox.get_children():
+		taskpanel.queue_free()
+		
 	for task in data:
-		printed_text += data[task]
-		printed_text += "\n"
+		var new_panel = preloaded_taskpanel.instantiate()
+		%TaskPanelVbox.add_child(new_panel)
+		new_panel.task_finished_signal.connect(_on_task_finished)
+		new_panel.task_id = task
+		new_panel.task_string = data[task]
+		new_panel.set_tasklabel_text(data[task])
 
-	%TaskList.text = printed_text
 
+func delete_task_from_data(target_id):
+	pass
+			
+
+func _on_task_finished(task_panel):
+#	create_todookie()
+	delete_task_from_data(task_panel.task_id)
+	task_panel.queue_free()

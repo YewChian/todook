@@ -1,11 +1,29 @@
-[gd_scene format=3 uid="uid://7jut61be564c"]
+[gd_scene load_steps=3 format=3 uid="uid://7jut61be564c"]
+
+[ext_resource type="Script" path="res://task_panel.gd" id="1_e6lwn"]
+[ext_resource type="Texture2D" uid="uid://d2ev7cfqicncr" path="res://Assets/Crystal.png" id="2_qqktj"]
 
 [node name="TaskPanel" type="Panel"]
+modulate = Color(0.803922, 1, 1, 1)
+size_flags_horizontal = 3
+size_flags_vertical = 0
+script = ExtResource("1_e6lwn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TaskLabel" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_right = 88.0
-offset_bottom = 47.0
-text = "1. spookie dookie"
+[node name="TaskLabel" type="RichTextLabel" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(512, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "123456789"
+
+[node name="DoneButton" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("2_qqktj")
+
+[connection signal="pressed" from="HBoxContainer/DoneButton" to="." method="_on_done_button_pressed"]
