@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://dii4pllwraifv"]
+
+[ext_resource type="PackedScene" uid="uid://bofi4t2vhaadn" path="res://Todooks/Todook.tscn" id="1_2mwlk"]
+[ext_resource type="Texture2D" uid="uid://dhj4xv5vicg32" path="res://Assets/Todooks/Reacher.png" id="2_2o7wv"]
+[ext_resource type="Script" path="res://Todooks/Reacher.gd" id="2_kxtyy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ilwr4"]
+radius = 20.2237
+
+[node name="Reacher" groups=["Persist"] instance=ExtResource("1_2mwlk")]
+script = ExtResource("2_kxtyy")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_2o7wv")
+
+[node name="Skeleton" parent="." index="1"]
+shape = SubResource("CircleShape2D_ilwr4")

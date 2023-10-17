@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bofi4t2vhaadn"]
+
+[ext_resource type="Script" path="res://Todooks/Todook.gd" id="1_dvghh"]
+
+[node name="Todook" type="CharacterBody2D"]
+script = ExtResource("1_dvghh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Skeleton" type="CollisionShape2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="StateTimer" type="Timer" parent="."]

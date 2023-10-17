@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://csgqo6ku2t7g0"]
+
+[ext_resource type="Script" path="res://Structures/Structure.gd" id="1_281ay"]
+
+[node name="Structure" type="StaticBody2D" groups=["Persist"]]
+y_sort_enabled = true
+script = ExtResource("1_281ay")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Skeleton" type="CollisionShape2D" parent="."]

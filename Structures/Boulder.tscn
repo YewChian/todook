@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dca2a51qfat8u"]
+
+[ext_resource type="PackedScene" uid="uid://csgqo6ku2t7g0" path="res://Structures/Structure.tscn" id="1_uo1j3"]
+[ext_resource type="Texture2D" uid="uid://caj8b0noqgy75" path="res://Assets/Structures/Boulder.png" id="2_bx5pl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wu6n1"]
+radius = 35.0
+
+[node name="Boulder" instance=ExtResource("1_uo1j3")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_bx5pl")
+
+[node name="Skeleton" parent="." index="1"]
+shape = SubResource("CircleShape2D_wu6n1")

@@ -15,6 +15,10 @@ run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://Assets/Crystal.png"
 
+[autoload]
+
+Globals="*res://Singletons/Globals.gd"
+
 [display]
 
 window/size/viewport_width=720

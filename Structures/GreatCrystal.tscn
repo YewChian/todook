@@ -1,16 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://btad68awl2l2b"]
+[gd_scene load_steps=4 format=3 uid="uid://c4rxwnodwukjq"]
 
 [ext_resource type="Texture2D" uid="uid://c7x3cw348ueor" path="res://Assets/Structures/GreatCrystal.png" id="1_6slyi"]
+[ext_resource type="PackedScene" uid="uid://csgqo6ku2t7g0" path="res://Structures/Structure.tscn" id="1_v5jxb"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_u46fx"]
-radius = 36.4006
+[sub_resource type="CircleShape2D" id="CircleShape2D_otq88"]
+radius = 14.0357
 
-[node name="GreatCrystal" type="StaticBody2D"]
-y_sort_enabled = true
+[node name="GreatCrystal" instance=ExtResource("1_v5jxb")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("1_6slyi")
 
-[node name="Skeleton" type="CollisionShape2D" parent="."]
-position = Vector2(0, 35)
-shape = SubResource("CircleShape2D_u46fx")
+[node name="Skeleton" parent="." index="1"]
+shape = SubResource("CircleShape2D_otq88")
