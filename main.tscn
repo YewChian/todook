@@ -63,4 +63,6 @@ layer_0/tile_data = PackedInt32Array(-4, 0, 0, 1245197, 0, 0, 1179660, 0, 0, 111
 
 [node name="Structures" type="Node2D" parent="."]
 
+[node name="Items" type="Node2D" parent="."]
+
 [connection signal="pressed" from="CanvasLayer/CenterContainer/MarginContainer/VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]

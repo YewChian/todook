@@ -5,6 +5,7 @@ class_name Todook
 var move_speed
 var move_direction = Vector2(0,0)
 var state
+var lifespan
 
 enum {
 	Wander,
@@ -15,6 +16,8 @@ func _ready():
 	initialize_stats()
 	state = Wander
 	$StateTimer.start(1)
+	$LifeTimer.start(lifespan)
+	
 	
 func initialize_stats():
 	pass
@@ -63,3 +66,7 @@ func _on_state_timer_timeout():
 	print(new_state)
 	enter_state(new_state)
 	$StateTimer.start(10)
+
+
+func _on_life_timer_timeout():
+	queue_free()

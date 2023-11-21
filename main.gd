@@ -17,6 +17,7 @@ func _ready():
 func initialize_map():
 	greatcrystal_node = create_greatcrystal()
 	create_land1_boundary(greatcrystal_node.global_position)
+	
 
 func create_land1_boundary(map_center_position):
 	var loaded_boulder_scene = load("res://Structures/Boulder.tscn")
@@ -34,7 +35,6 @@ func create_land1_boundary(map_center_position):
 		new_boulder = loaded_boulder_scene.instantiate()
 		$Structures.add_child(new_boulder)
 		new_boulder.global_position = map_center_position + (Vector2.from_angle(angle_from_center) * land1_radius)
-		
 		angle_from_center += (2*PI/number_of_boulders)
 
 	Globals.land_radius = land1_radius

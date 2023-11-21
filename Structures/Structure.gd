@@ -1,4 +1,5 @@
 extends StaticBody2D
+class_name Structure
 
 func save():
 	var save_dict = {
@@ -9,3 +10,12 @@ func save():
 
 	}
 	return save_dict
+
+
+func _ready():
+	call_deferred("initialize_structure")
+
+
+func initialize_structure():
+	pass
+

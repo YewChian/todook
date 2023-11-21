@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://bp1yjdwurtjj6"]
+
+[ext_resource type="PackedScene" uid="uid://diphni1ic57fd" path="res://Items/Item.tscn" id="1_7xwc1"]
+[ext_resource type="Texture2D" uid="uid://b4i8bchjvkunu" path="res://Assets/Items/SmallCrystal.png" id="2_s1g46"]
+[ext_resource type="Script" path="res://Items/SmallCrystal.gd" id="2_s6pb3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4fgqj"]
+radius = 6.08276
+
+[node name="SmallCrystal" instance=ExtResource("1_7xwc1")]
+script = ExtResource("2_s6pb3")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_s1g46")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_4fgqj")

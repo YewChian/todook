@@ -1,15 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4rxwnodwukjq"]
+[gd_scene load_steps=5 format=3 uid="uid://c4rxwnodwukjq"]
 
 [ext_resource type="Texture2D" uid="uid://c7x3cw348ueor" path="res://Assets/Structures/GreatCrystal.png" id="1_6slyi"]
 [ext_resource type="PackedScene" uid="uid://csgqo6ku2t7g0" path="res://Structures/Structure.tscn" id="1_v5jxb"]
+[ext_resource type="Script" path="res://Structures/GreatCrystal.gd" id="2_dduky"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_otq88"]
 radius = 14.0357
 
 [node name="GreatCrystal" instance=ExtResource("1_v5jxb")]
+script = ExtResource("2_dduky")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("1_6slyi")
 
 [node name="Skeleton" parent="." index="1"]
 shape = SubResource("CircleShape2D_otq88")
+
+[node name="DayNightTimer" type="Timer" parent="." index="2"]
+wait_time = 60.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." index="3"]
+amount = 32
+lifetime = 60.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+orbit_velocity_min = 0.01
+orbit_velocity_max = 0.05
+scale_amount_max = 3.0
+color = Color(0.329412, 1, 1, 1)
+hue_variation_max = 1.0
+
+[connection signal="timeout" from="DayNightTimer" to="." method="_on_day_night_timer_timeout"]
